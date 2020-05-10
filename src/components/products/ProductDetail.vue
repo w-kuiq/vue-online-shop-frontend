@@ -5,7 +5,7 @@
     </div>
     <div class="product-details__info">
       <div class="product-details__description">
-        <small>{{product.manufacturer}}</small>
+        <small>{{product.manufacturer.name}}</small>
         <h3>{{product.name}}</h3>
         <p>
           {{product.description}}

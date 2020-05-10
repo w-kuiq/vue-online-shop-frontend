@@ -26,13 +26,44 @@ const productsData = function () {
       _id: i,
       name: Random.csentence(1, 3),
       description: Random.csentence(5, 20),
-      price: Random.csentence(1, 3),
-      image: Random.image()
+      price: Random.integer(600, 1000),
+      image: Random.image(),
+      manufacturer: {
+        _id: i,
+        name: i + Random.cword(2, 4)
+      }
     }
     productList.push(newProdcutObject)
   }
   return productList
 }
+
+const manufacturersData = function () {
+  let manufacturersList = []
+  for (let i = 0; i < 10; i++) {
+    let newProdcutObject = {
+      _id: i,
+      name: Random.cword(2, 4)
+    }
+    manufacturersList.push(newProdcutObject)
+  }
+  return manufacturersList
+}
+
 // 请求该url，就可以返回newsList
 Mock.mock('/mock/news', produceNewsData) // 后面讲这个api的使用细节
-Mock.mock('/mock/products', productsData) // 后面讲这个api的使用细节
+Mock.mock('/mock/products', productsData)
+Mock.mock('/mock/manufacturers', manufacturersData)
+Mock.mock('/mock/manufacturers', 'delete', (options) => {
+  console.log(options)
+  var id = parseInt(options.body.split("=")[1])//获取删除的id
+  var index
+  for (var i in manufacturersData) {
+    if (manufacturersData[i]._d === id) {//在数组arr里找到这个id
+      index = i
+      break
+    }
+  }
+  manufacturersData.splice(index, 1)//把这个id对应的对象从数组里删除
+  return manufacturersData//返回这个数组,也就是返回处理后的假数据
+})

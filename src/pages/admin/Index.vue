@@ -10,6 +10,12 @@
             <li>
               <router-link to="/admin/new">New Products</router-link>
             </li>
+            <li>
+              <router-link to="/admin/manufacturers">View manufacturers</router-link>
+            </li>
+            <li>
+              <router-link to="/admin/manufacturers/new">添加生产商</router-link>
+            </li>
           </ul>
         </div>
         <router-view></router-view>

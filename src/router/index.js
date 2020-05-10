@@ -4,6 +4,9 @@ import Home from '@/components/Home'
 // import Admin from '@/pages/Admin'
 import Cart from '@/pages/Cart'
 import Detail from '@/pages/Detail'
+import Manufacturers from '@/pages/admin/Manufacturers'
+import NewManufacturers from '@/pages/admin/NewManufacturers'
+import EditManufacturers from '@/pages/admin/EditManufacturers'
 
 // Admin Components
 import Index from '@/pages/admin/Index'
@@ -39,6 +42,21 @@ export default new Router({
           path: 'edit/:id',
           name: 'Edit',
           component: Edit
+        },
+        {
+          path: 'manufacturers',
+          name: 'Manufacturers',
+          component: Manufacturers
+        },
+        {
+          path: 'manufacturers/new',
+          name: 'NewManufacturers',
+          component: NewManufacturers
+        },
+        {
+          path: 'manufacturers/edit/:id',
+          name: 'EditManufacturers',
+          component: EditManufacturers
         }
       ]
     },

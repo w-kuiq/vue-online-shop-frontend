@@ -3,23 +3,12 @@
     <div class="title">
       <h1>{{msg}}</h1>
     </div>
-    <template v-for="product in cart">
-      <product-item :product="product" :key="product._id"></product-item>
-    </template>
+    <product-item :products="cart"></product-item>
   </div>
 </template>
-<style>
-.product {
-  border-bottom: 1px solid black;
-}
 
-.product__image {
-  width: 100px;
-  height: 100px;
-}
-</style>
 <script>
-import ProductItem from '@/components/products/ProductItem';
+import ProductItem from '@/components/products/ProductItem.vue';
   export default {
     name: 'home',
     data () {
@@ -32,16 +21,8 @@ import ProductItem from '@/components/products/ProductItem';
         return this.$store.state.cart;
       }
     },
-    methods: {
-      removeFromCart(productId) {
-        this.$store.commit('REMOVE_FROM_CART', {
-          productId
-        });
-      }
-    },
-    components:{
-      'product-item':ProductItem
+    components: {
+      'product-item': ProductItem
     }
-
   }
 </script>

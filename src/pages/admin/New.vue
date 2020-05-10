@@ -12,26 +12,28 @@ import ProductForm from '@/components/products/ProductForm.vue';
 export default {
   data() {
     return {
-      model: {},
-      manufacturers: [
-        {
-          _id: 'sam',
-          name: 'Samsung',
-        },
-        {
-          _id: 'apple',
-          name: 'Apple',
-        },
-      ],
-    };
+      model: {manufacturer:{name: ''}}
+    }
+  },
+  created() {
+    if (this.manufacturers.length === 0) {
+      this.$store.dispatch('allManufacturers');
+    }
+  },
+  computed: {
+    manufacturers() {
+      return this.$store.getters.allManufacturers;
+    }
   },
   methods: {
     addProduct(model) {
-      console.log('model', model);
+      this.$store.dispatch('addProduct', {
+        product: model,
+      })
     },
   },
   components: {
-    'product-form': ProductForm
+  'product-form': ProductForm
   }
 }
 </script>
