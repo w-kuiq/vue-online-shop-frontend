@@ -18,6 +18,7 @@
     </div>
   </div>
 </template>
+
 <style>
   .product-details__image .image {
     width: 100px;
